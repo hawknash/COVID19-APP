@@ -32,6 +32,7 @@ import com.example.covid19.parameter.Articles;
 import com.example.covid19.parameter.Headlines;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -120,7 +121,7 @@ public class HomeFragment extends Fragment {
                     Log.d("yes","yes"+response.body().getCases_time_series());
 
                     articles=response.body().getCases_time_series();
-
+                    Collections.reverse(articles);
                     adapter =new CustomAdapter(getActivity(), response.body().getCases_time_series());
                     recyclerView.setAdapter(adapter);
 

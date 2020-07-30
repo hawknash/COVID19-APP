@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_margin="8dp"
-        app:cardCornerRadius="6dp"
+        app:cardCornerRadius="25dp"
         app:cardElevation="6dp"
         app:cardBackgroundColor="@color/cardview_dark_background"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:background="@drawable/card"
             android:orientation="vertical">
 
             <TextView
@@ -39,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@color/cardview_dark_background"
+        android:background="@drawable/button"
         android:textColor="@android:color/white"
         android:hint="Search State Here!"
         android:id="@+id/editTextSearch"/>
@@ -49,7 +50,7 @@
         android:text="GRAPH"
         android:layout_margin="10dp"
         android:textColor="@android:color/white"
-        android:background="@color/cardview_dark_background"
+        android:background="@drawable/card"
         android:layout_height="wrap_content"></Button>
 
 

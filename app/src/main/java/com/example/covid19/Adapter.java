@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,19 +42,26 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     final Articles art=articles.get(position);
     String url=art.getUrl();
     holder.newsTitle.setText(art.getTitle());
-    holder.newsDate.setText(art.getPublishedAt());
+  //  holder.newsDate.setText(art.getPublishedAt());
     String imageUrl=art.getUrlToImage();
 
     Picasso.get().load(imageUrl).into(holder.imageView);
-
-     holder.cardView.setOnClickListener(new View.OnClickListener() {
+    holder.know.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context, NewsInDetail.class);
+            intent.putExtra("url",art.getUrl());
+            context.startActivity(intent);
+        }
+    });
+   /*  holder.cardView.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
              Intent intent=new Intent(context, NewsInDetail.class);
              intent.putExtra("url",art.getUrl());
              context.startActivity(intent);
          }
-     });
+     }); */
      }
 
     @Override
@@ -67,12 +75,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         TextView newsTitle,newsDate;
         ImageView imageView;
         CardView cardView;
+        Button know;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            newsDate=itemView.findViewById(R.id.newsDate);
+
             newsTitle=itemView.findViewById(R.id.newsTitle);
             imageView=itemView.findViewById(R.id.image);
             cardView=itemView.findViewById(R.id.cardView);
+            know=itemView.findViewById(R.id.know);
         }
     }
     public String getCountry()

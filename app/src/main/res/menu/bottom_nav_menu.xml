@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="News" />
 
+    <item
+        android:id="@+id/navigation_district"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="District" />
+
 </menu>

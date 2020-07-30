@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.covid19.MainActivity;
+import com.example.covid19.ui.dashboard.DashboardFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +29,7 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         try {
-            URL url = new URL("https://api.covid19india.org/data.json");
+            URL url = new URL("https://api.covid19india.org/state_district_wise.json");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -54,12 +55,15 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
         try {
             JSONObject ja=new JSONObject(data);
             //da = new JSONObject(data);
-           // JSONObject jo=da.getJSONObject("cases_time_series");
-           // Log.e("doo","doo"+ja.get("cases_time_series"));
-            String s=ja.get("cases_time_series").toString();
-            String s1="{"+s.substring(1,s.length()-1)+"}";
-           Log.e("doo","doo"+s1);
+            JSONObject jo=ja.getJSONObject("Uttar Pradesh").getJSONObject("districtData").getJSONObject("Kanpur Nagar");
 
+           // Log.e("doo","doo"+ja.get("cases_time_series"));
+
+           Log.e("doo","doo"+jo.get("active"));
+           District.active.setText(jo.get("active").toString());
+            District.confirmed.setText(jo.get("confirmed").toString());
+            District.deceased.setText(jo.get("deceased").toString());
+            District.recovered.setText(jo.get("recovered").toString());
 
 
             MainActivity.one.setText(data);
